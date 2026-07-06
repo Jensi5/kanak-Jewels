@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanak Jewels — Fine Diamond Jewellery, Surat</title>
+  <meta name="description"
+    content="Kanak Jewels — bespoke diamond jewellery from Surat, the diamond city of the world.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0a0a0b;
+      --panel: #131215;
+      --panel-2: #18161a;
+      --gold: #c6a15b;
+      --gold-bright: #e8cd8a;
+      --bronze: #7a5c2e;
+      --ivory: #f6f1e6;
+      --ivory-dim: #c9c2b2;
+      --hair: rgba(198, 161, 91, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    /* focus visibility */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 1px solid var(--gold-bright);
+      outline-offset: 3px;
+    }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 5vw;
+      background: linear-gradient(to bottom, rgba(10, 10, 11, 0.92), transparent);
+      transition: background .3s ease, padding .3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(10, 10, 11, 0.88);
+      backdrop-filter: blur(10px);
+      padding: 14px 5vw;
+      border-bottom: 1px solid var(--hair);
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    nav.links {
+      display: flex;
+      gap: 34px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+    }
+
+    nav.links a {
+      position: relative;
+      padding-bottom: 4px;
+      color: var(--ivory-dim);
+      transition: color .25s ease;
+    }
+
+    nav.links a:hover {
+      color: var(--gold-bright);
+    }
+
+    nav.links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width .3s ease;
+    }
+
+    nav.links a:hover::after {
+      width: 100%;
+    }
+
+    .cta-call {
+      border: 1px solid var(--gold);
+      color: var(--gold-bright);
+      padding: 9px 20px;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+      transition: all .3s ease;
+      white-space: nowrap;
+    }
+
+    .cta-call:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--ivory);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 6vw 60px;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(198, 161, 91, 0.10), transparent 60%),
+        var(--ink);
+    }
+
+    .sparkle-field {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--gold-bright);
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 4s ease-in-out infinite;
+      box-shadow: 0 0 6px 1px rgba(232, 205, 138, 0.8);
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0.4);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .diamond-mark {
+      width: 120px;
+      height: 150px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .diamond-mark svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .facet-line {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: draw 2.6s ease forwards;
+    }
+
+    .facet-fill {
+      fill: url(#facetGrad);
+      opacity: 0;
+      animation: fadeIn 1.5s ease 1.8s forwards;
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 0.9;
+      }
+    }
+
+    .hero .eyebrow {
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: rise .9s ease .3s forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 9vw, 6.4rem);
+      line-height: 0.95;
+      color: var(--ivory);
+      opacity: 0;
+      animation: rise 1s ease .5s forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-bright);
+    }
+
+    .hero p.sub {
+      max-width: 520px;
+      margin-top: 22px;
+      font-size: 1.02rem;
+      color: var(--ivory-dim);
+      line-height: 1.7;
+      opacity: 0;
+      animation: rise 1s ease .75s forwards;
+    }
+
+    .hero .actions {
+      margin-top: 38px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: rise 1s ease 1s forwards;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+      padding: 14px 30px;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+      transition: transform .25s ease, background .25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-bright);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--hair);
+      color: var(--ivory);
+      padding: 14px 30px;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+      transition: border-color .25s ease, color .25s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-bright);
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: var(--ivory-dim);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scroll-cue .line {
+      width: 1px;
+      height: 34px;
+      background: linear-gradient(var(--gold), transparent);
+      animation: pulseLine 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseLine {
+
+      0%,
+      100% {
+        opacity: .3;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* ---------- SECTION SHARED ---------- */
+    section {
+      padding: 120px 6vw;
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+
+    .section-head .eyebrow {
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      color: var(--ivory);
+    }
+
+    .section-head p {
+      margin-top: 18px;
+      color: var(--ivory-dim);
+      line-height: 1.75;
+      font-size: 1.02rem;
+      max-width: 520px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- ABOUT / HERITAGE ---------- */
+    .about {
+      background: var(--panel);
+      border-top: 1px solid var(--hair);
+      border-bottom: 1px solid var(--hair);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-visual {
+      aspect-ratio: 4/5;
+      border: 1px solid var(--hair);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(198, 161, 91, 0.14), transparent 55%),
+        linear-gradient(160deg, #17151a, #0d0c0e 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-visual svg {
+      width: 52%;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 44px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold-bright);
+      display: block;
+    }
+
+    .stat span {
+      font-size: 0.78rem;
+      color: var(--ivory-dim);
+      letter-spacing: 0.04em;
+    }
+
+    /* ---------- COLLECTIONS ---------- */
+    .collections {
+      background: var(--ink);
+    }
+
+    .coll-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--hair);
+      border: 1px solid var(--hair);
+    }
+
+    .coll-card {
+      background: var(--ink);
+      padding: 52px 26px 34px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: background .4s ease;
+    }
+
+    .coll-card:hover {
+      background: var(--panel);
+    }
+
+    .coll-card .icon {
+      width: 64px;
+      height: 80px;
+      margin: 0 auto 26px;
+      position: relative;
+    }
+
+    .coll-card .icon svg {
+      width: 100%;
+      height: 100%;
+      transition: transform .5s ease;
+    }
+
+    .coll-card:hover .icon svg {
+      transform: rotate(6deg) scale(1.08);
+    }
+
+    .coll-card h3 {
+      font-size: 1.5rem;
+      color: var(--ivory);
+      margin-bottom: 8px;
+    }
+
+    .coll-card p {
+      font-size: 0.86rem;
+      color: var(--ivory-dim);
+      line-height: 1.6;
+    }
+
+    .shine {
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(232, 205, 138, 0.08), transparent);
+      transform: skewX(-20deg);
+      transition: left 1s ease;
+    }
+
+    .coll-card:hover .shine {
+      left: 120%;
+    }
+
+    /* ---------- WHY / PROCESS ---------- */
+    .why {
+      background: var(--panel);
+      border-top: 1px solid var(--hair);
+      border-bottom: 1px solid var(--hair);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px;
+    }
+
+    .why-item {
+      border-top: 1px solid var(--hair);
+      padding-top: 26px;
+    }
+
+    .why-item .mark {
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .why-item h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      color: var(--ivory);
+    }
+
+    .why-item p {
+      color: var(--ivory-dim);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* ---------- VISIT / CONTACT ---------- */
+    .visit {
+      background: var(--ink);
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: stretch;
+    }
+
+    .visit-card {
+      border: 1px solid var(--hair);
+      border-radius: 4px;
+      padding: 44px;
+      background: linear-gradient(160deg, #151318, #0d0c0e);
+    }
+
+    .visit-card .row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 26px;
+    }
+
+    .visit-card .row svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--gold);
+    }
+
+    .visit-card .row div b {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ivory-dim);
+      margin-bottom: 5px;
+    }
+
+    .visit-card .row div a,
+    .visit-card .row div span {
+      font-size: 1.05rem;
+      color: var(--ivory);
+      line-height: 1.5;
+    }
+
+    .visit-card .row div a:hover {
+      color: var(--gold-bright);
+    }
+
+    .visit-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .map-wrap {
+      border: 1px solid var(--hair);
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 340px;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      border: 0;
+      filter: grayscale(0.3) contrast(1.05);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      padding: 50px 6vw 34px;
+      border-top: 1px solid var(--hair);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: var(--ivory-dim);
+      font-size: 0.8rem;
+    }
+
+    footer .brand {
+      font-size: 1.15rem;
+    }
+
+    footer .socials {
+      display: flex;
+      gap: 20px;
+    }
+
+    footer .socials a {
+      color: var(--ivory-dim);
+      transition: color .25s ease;
+    }
+
+    footer .socials a:hover {
+      color: var(--gold-bright);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:900px) {
+      nav.links {
+        display: none;
+      }
+
+      .about-grid,
+      .visit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .coll-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="siteHeader">
+    <div class="brand">
+      <svg viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 9L12 2L22 9L12 28L2 9Z" stroke="#c6a15b" stroke-width="1.2" />
+        <path d="M2 9H22M7 9L12 2L17 9M7 9L12 28M17 9L12 28" stroke="#c6a15b" stroke-width="0.8" opacity="0.7" />
+      </svg>
+      KANAK <span style="color:var(--gold-bright); font-style:italic; margin-left:4px;">Jewels</span>
+    </div>
+    <nav class="links">
+      <a href="#about">Heritage</a>
+      <a href="#collections">Collections</a>
+      <a href="#why">Why Us</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="cta-call" href="tel:+918690299200">Call 86902 99200</a>
+  </header>
+
+  <section class="hero">
+    <div class="sparkle-field" id="sparkleField"></div>
+    <span class="eyebrow">Surat &middot; The Diamond City of the World</span>
+    <div class="diamond-mark">
+      <svg viewBox="0 0 120 150">
+        <defs>
+          <linearGradient id="facetGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8cd8a" />
+            <stop offset="100%" stop-color="#7a5c2e" />
+          </linearGradient>
+        </defs>
+        <polygon class="facet-fill" points="10,45 60,10 110,45 60,140" />
+        <polyline class="facet-line" points="10,45 60,10 110,45 60,140 10,45" />
+        <polyline class="facet-line" points="35,45 60,10 85,45" style="animation-delay:.3s" />
+        <polyline class="facet-line" points="10,45 110,45" style="animation-delay:.5s" />
+        <polyline class="facet-line" points="35,45 60,140" style="animation-delay:.7s" />
+        <polyline class="facet-line" points="85,45 60,140" style="animation-delay:.7s" />
+      </svg>
+    </div>
+    <h1>Brilliance, <em>Crafted</em><br>in Gold.</h1>
+    <p class="sub">Kanak Jewels brings hand-set diamonds and fine gold craftsmanship from Surat's diamond district to
+      your everyday luxury &mdash; timeless pieces, made to be kept.</p>
+    <div class="actions">
+      <a class="btn-gold" href="https://wa.me/918690299200" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.2c-.2.6-1.2 1.2-1.7 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.7-1.2-4.5-3.9-4.6-4.1-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.1.2-.2.4-.3.5-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.4.1.2.1.7-.1 1.3z" />
+        </svg>
+        WhatsApp Us
+      </a>
+      <a class="btn-ghost" href="#collections">View Collections</a>
+    </div>
+    <div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="eyebrow">Our Heritage</span>
+        <h2 style="margin-top:14px; font-size:clamp(2rem,4vw,3rem);">Born in the city<br>that cuts the world's diamonds.
+        </h2>
+        <p style="margin-top:22px; color:var(--ivory-dim); line-height:1.8; max-width:480px;">
+          Nine out of ten diamonds worn anywhere on earth pass through Surat's workshops. Kanak Jewels grew up inside
+          that legacy &mdash; sourcing, cutting and setting stones a few streets from where they're polished, so every
+          piece reaches you with none of the usual markup of the trade.
+        </p>
+        <div class="stat-row">
+          <div class="stat"><b>25+</b><span>Years in the Surat diamond trade</span></div>
+          <div class="stat"><b>100%</b><span>Certified &amp; hallmarked jewellery</span></div>
+          <div class="stat"><b>BIS</b><span>Hallmark gold, always</span></div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <svg viewBox="0 0 200 240" fill="none">
+          <polygon points="20,80 100,20 180,80 100,220" stroke="#c6a15b" stroke-width="1" />
+          <polyline points="60,80 100,20 140,80" stroke="#c6a15b" stroke-width="0.7" opacity="0.7" />
+          <polyline points="20,80 180,80" stroke="#c6a15b" stroke-width="0.7" opacity="0.7" />
+          <polyline points="60,80 100,220" stroke="#c6a15b" stroke-width="0.7" opacity="0.7" />
+          <polyline points="140,80 100,220" stroke="#c6a15b" stroke-width="0.7" opacity="0.7" />
+          <polygon points="20,80 100,20 180,80 100,220" fill="url(#facetGradAbout)" opacity="0.15" />
+          <defs>
+            <linearGradient id="facetGradAbout" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e8cd8a" />
+              <stop offset="100%" stop-color="#7a5c2e" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="collections" id="collections">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Collection</span>
+      <h2>Four ways to wear brilliance.</h2>
+      <p>Every category is available in 18K &amp; 22K gold, with certified diamonds set to order. Visit the shop for the
+        full catalogue and live pricing.</p>
+    </div>
+    <div class="coll-grid reveal">
+      <div class="coll-card">
+        <div class="shine"></div>
+        <div class="icon"><svg viewBox="0 0 64 80" fill="none">
+            <path d="M32 8c-9 0-16 6-16 15 0 12 16 40 16 40s16-28 16-40c0-9-7-15-16-15z" stroke="#c6a15b"
+              stroke-width="1.2" />
+            <circle cx="32" cy="23" r="7" stroke="#c6a15b" stroke-width="1" />
+          </svg></div>
+        <h3>Necklaces</h3>
+        <p>Statement diamond sets &amp; delicate everyday chains.</p>
+      </div>
+      <div class="coll-card">
+        <div class="shine"></div>
+        <div class="icon"><svg viewBox="0 0 64 80" fill="none">
+            <ellipse cx="32" cy="55" rx="18" ry="14" stroke="#c6a15b" stroke-width="1.2" />
+            <polygon points="18,42 32,20 46,42 32,55" stroke="#c6a15b" stroke-width="1" />
+          </svg></div>
+        <h3>Rings</h3>
+        <p>Solitaires, bridal sets and everyday bands.</p>
+      </div>
+      <div class="coll-card">
+        <div class="shine"></div>
+        <div class="icon"><svg viewBox="0 0 64 80" fill="none">
+            <path d="M32 10v14" stroke="#c6a15b" stroke-width="1.2" />
+            <polygon points="20,24 32,44 44,24" stroke="#c6a15b" stroke-width="1.2" />
+            <circle cx="32" cy="24" r="4" stroke="#c6a15b" stroke-width="1" />
+          </svg></div>
+        <h3>Earrings</h3>
+        <p>Studs, drops and jhumkas in diamond &amp; gold.</p>
+      </div>
+      <div class="coll-card">
+        <div class="shine"></div>
+        <div class="icon"><svg viewBox="0 0 64 80" fill="none">
+            <circle cx="32" cy="40" r="24" stroke="#c6a15b" stroke-width="1.2" />
+            <circle cx="32" cy="40" r="16" stroke="#c6a15b" stroke-width="0.7" opacity="0.6" />
+          </svg></div>
+        <h3>Bangles &amp; Bracelets</h3>
+        <p>Traditional kada to modern tennis bracelets.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Kanak</span>
+      <h2>The difference is in the setting.</h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-item">
+        <span class="mark">01</span>
+        <h3>Direct from Surat</h3>
+        <p>No middlemen &mdash; our diamonds are sourced and cut within the city's own trading houses, minutes from our
+          shop.</p>
+      </div>
+      <div class="why-item">
+        <span class="mark">02</span>
+        <h3>Certified &amp; Hallmarked</h3>
+        <p>Every diamond carries certification and every gold piece carries BIS hallmarking, with a lifetime buy-back on
+          gold.</p>
+      </div>
+      <div class="why-item">
+        <span class="mark">03</span>
+        <h3>Made to Order</h3>
+        <p>Bring a design or a photo &mdash; our in-house karigars can craft a bespoke piece to your exact measurements.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visit the Shop</span>
+      <h2>Come see it in the light.</h2>
+      <p>Diamonds are best seen in person. Drop by, or reach out on WhatsApp for a private viewing.</p>
+    </div>
+    <div class="visit-grid reveal">
+      <div class="visit-card">
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" />
+            <circle cx="12" cy="10" r="2.5" />
+          </svg>
+          <div><b>Shop Address</b><span>315, Shreyash Diamond, Mini Bazar, Varachha Road, Surat, Gujarat</span></div>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M4 5c0-1 1-2 2-2h2l2 5-2 2c1 3 3 5 6 6l2-2 5 2v2c0 1-1 2-2 2C10 20 4 14 4 5z" />
+          </svg>
+          <div><b>Call / WhatsApp</b><a href="tel:+918690299200">+91 86902 99200</a></div>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="3" y="5" width="18" height="14" rx="1.5" />
+            <path d="M3 6l9 7 9-7" />
+          </svg>
+          <div><b>Email</b><a href="mailto:kjewels1601@gmail.com">kjewels1601@gmail.com</a></div>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 7v5l3 3" />
+          </svg>
+          <div><b>Hours</b><span>Mon &ndash; Sun, 10:30 AM &ndash; 8:30 PM</span></div>
+        </div>
+        <div class="visit-actions">
+          <a class="btn-gold" href="https://wa.me/918690299200" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <a class="btn-ghost" href="tel:+918690299200">Call Now</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=315+Shreyash+Diamond+Mini+Bazar+Varachha+Road+Surat&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand">KANAK <span style="color:var(--gold-bright); font-style:italic;">Jewels</span></div>
+    <div>315, Shreyash Diamond, Mini Bazar, Varachha Road, Surat &nbsp;&middot;&nbsp; +91 86902 99200
+      &nbsp;&middot;&nbsp; kjewels1601@gmail.com</div>
+    <div>&copy; <span id="year"></span> Kanak Jewels. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // header scroll state
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // sparkle field
+    const field = document.getElementById('sparkleField');
+    for (let i = 0; i < 28; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDelay = (Math.random() * 4) + 's';
+      s.style.animationDuration = (3 + Math.random() * 3) + 's';
+      field.appendChild(s);
+    }
+
+    // reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
